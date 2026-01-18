@@ -4,6 +4,8 @@ Application entry point with dark theme.
 """
 Application entry point with dark theme.
 """
+from version import __version__
+
 import os
 import sys
 

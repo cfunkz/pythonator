@@ -8,14 +8,19 @@ from __future__ import annotations
 import json
 import re
 from dataclasses import dataclass, asdict, field
-from pathlib import Path
 from typing import Optional
-
+from pathlib import Path
+import sys
 # =============================================================================
 # Paths - Use script directory for portability
 # =============================================================================
 
-APP_DIR = Path(__file__).resolve().parent
+def get_app_dir() -> Path:
+    if getattr(sys, "frozen", False):
+        return Path(sys.executable).resolve().parent
+    return Path(__file__).resolve().parent
+
+APP_DIR = get_app_dir()
 CONFIG_FILE = APP_DIR / "bots.json"
 LOGS_DIR = APP_DIR / "logs"
 

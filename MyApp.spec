@@ -9,7 +9,7 @@ binaries += collect_dynamic_libs('PyQt6')
 
 
 a = Analysis(
-    ['app_main.py'],
+    ['app.py'],
     pathex=[],
     binaries=binaries,
     datas=datas,
