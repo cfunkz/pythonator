@@ -112,12 +112,6 @@ It is particularly useful for:
 
 ---
 
-Here’s a clean, **non-intimidating but professional** update to the **Running the application** section that covers **Windows executables** and points to a release `.zip`.
-
-You can drop this straight into your README, replacing the existing section.
-
----
-
 ## Running the application
 
 ### Option 1: Run from source (any platform)
