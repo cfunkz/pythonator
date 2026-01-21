@@ -90,7 +90,6 @@ Pythonator was built to remove friction commonly encountered during local develo
 * manually tracking virtual environments
 * restarting crashed scripts
 * inspecting large volumes of console output
-* running long-lived background processes while coding
 
 It is particularly useful for:
 
@@ -98,7 +97,7 @@ It is particularly useful for:
 * background workers
 * small services
 * development tooling
-* long-running experiments
+* long-running processes
 
 ---
 
