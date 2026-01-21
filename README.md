@@ -182,5 +182,8 @@ No installer is required.
 
 ## License
 
+<p align="center">
+  <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT License">
+</p>
+
 MIT License.
-Use it freely, modify it, and build on it.
