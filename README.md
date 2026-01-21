@@ -177,13 +177,3 @@ No installer is required.
 6. Install dependencies
 7. Start the process
 8. Monitor logs and resource usage
-
----
-
-## License
-
-<p align="center">
-  <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT License">
-</p>
-
-MIT License.
