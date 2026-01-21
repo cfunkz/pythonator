@@ -96,6 +96,34 @@ At its core, Pythonator is a **local Python process manager with a GUI**.
 * Tracks resource usage per process tree
 * Keeps logs on drive for later inspection
 
+┌─────────────────────────────────────────────────────────────┐
+│                     MAIN THREAD (Qt)                        │
+│  • GUI rendering, button clicks, typing                     │
+│  • QProcess signal handlers (stdout/stderr callbacks)       │
+│  • Timer: _flush_logs() every 100ms                         │
+│  • Timer: _update_stats() every 1000ms                      │
+│  • ANSI parsing, console rendering                          │
+└─────────────────────────────────────────────────────────────┘
+        │                                    │
+        │ queue.put_nowait()                 │ QThreadPool.start()
+        ▼                                    ▼
+┌───────────────────┐              ┌───────────────────┐
+│  LOG WRITER       │              │  COMPLETION POOL  │
+│  (daemon thread)  │              │  (QThreadPool)    │
+│                   │              │                   │
+│  • File writes    │              │  • Jedi analysis  │
+│  • Never blocks   │              │  • Fallback words │
+│    UI thread      │              │                   │
+└───────────────────┘              └───────────────────┘
+
+┌─────────────────────────────────────────────────────────────┐
+│              CHILD PROCESSES (via QProcess)                 │
+│  • Bot 1 (separate Python process)                          │
+│  • Bot 2 (separate Python process)                          │
+│  • etc.                                                     │
+│  Note: These are PROCESSES, not threads - full isolation    │
+└─────────────────────────────────────────────────────────────┘
+
 ---
 
 ## Why it exists
