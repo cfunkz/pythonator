@@ -100,12 +100,13 @@ At its core, Pythonator is a **local Python process manager with a GUI**.
 
 ## Why it exists
 
-Pythonator was built to remove friction commonly encountered during local development:
+Pythonator was built to remove friction encountered during local development:
 
 * switching multiple terminals
 * manually tracking virtual environments
 * restarting crashed scripts
 * inspecting large volumes of console output
+* logging processes over long periods
 
 It is particularly useful for:
 
