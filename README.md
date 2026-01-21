@@ -16,6 +16,7 @@
     <br><strong>Buy me a coffee ☕</strong>
   </a>
 </p>
+
 # Pythonator
 
 **Pythonator** is a desktop application for running, monitoring, and managing multiple Python scripts concurrently through a clean graphical interface.
