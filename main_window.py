@@ -8,7 +8,7 @@ from PyQt6.QtGui import QKeySequence, QShortcut
 from PyQt6.QtWidgets import (QCheckBox, QComboBox, QFileDialog, QHBoxLayout, QInputDialog, QLabel, QLineEdit,
     QMainWindow, QMessageBox, QPlainTextEdit, QPushButton, QSplitter, QTabWidget, QVBoxLayout, QWidget, QProxyStyle, QStyle)
 from config import Bot, load_config, save_config, FLUSH_INTERVAL_MS, STATS_INTERVAL_MS, BTN, INPUT, __version__
-from log_buffer import LogBuffer
+from log_buffer import LogBuffer, shutdown_log_writer
 from log_view import LogView
 from process_mgr import ProcessManager
 from stats import ProcessStats, StatsMonitor
@@ -288,6 +288,10 @@ class MainWindow(QMainWindow):
 
     def closeEvent(self, event) -> None:
         self.proc_mgr.stop_all()
-        for e in self._editors.values(): e.close()
-        if self._scratch: self._scratch.close()
+        for e in self._editors.values():
+            e.close()
+        if self._scratch:
+            self._scratch.close()
+
+        shutdown_log_writer()  # <-- important
         event.accept()
