@@ -96,6 +96,7 @@ At its core, Pythonator is a **local Python process manager with a GUI**.
 * Tracks resource usage per process tree
 * Keeps logs on drive for later inspection
 
+```bash
 ┌─────────────────────────────────────────────────────────────┐
 │                     MAIN THREAD (Qt)                        │
 │  • GUI rendering, button clicks, typing                     │
@@ -123,6 +124,7 @@ At its core, Pythonator is a **local Python process manager with a GUI**.
 │  • etc.                                                     │
 │  Note: These are PROCESSES, not threads - full isolation    │
 └─────────────────────────────────────────────────────────────┘
+```
 
 ---
 
