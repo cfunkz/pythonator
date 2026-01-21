@@ -9,6 +9,12 @@ At its core, Pythonator is a **local Python process manager with a GUI**.
   <img alt="Python" src="https://img.shields.io/badge/Python-3.13%2B-blue" />
   <img alt="PyQt6" src="https://img.shields.io/badge/UI-PyQt6-41CD52" />
   <img alt="License" src="https://img.shields.io/badge/License-MIT-black" />
+  <a href="https://github.com/cfunkz/Pythonator/stargazers">
+    <img src="https://img.shields.io/github/stars/cfunkz/Pythonator?style=social" alt="GitHub stars">
+  </a>
+  <a href="https://github.com/cfunkz/Pythonator/issues">
+    <img src="https://img.shields.io/github/issues/cfunkz/Pythonator?style=social" alt="GitHub issues">
+  </a>
   <a href="https://ko-fi.com/cfunkz81112">
     <img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support on Ko-fi" height="20">
   </a>
