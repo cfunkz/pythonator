@@ -8,7 +8,7 @@ from PyQt6.QtGui import QKeySequence, QShortcut
 from PyQt6.QtWidgets import (QCheckBox, QComboBox, QFileDialog, QHBoxLayout, QInputDialog, QLabel, QLineEdit,
     QMainWindow, QMessageBox, QPlainTextEdit, QPushButton, QSplitter, QTabWidget, QVBoxLayout, QWidget, QProxyStyle, QStyle)
 from config import Bot, load_config, save_config, FLUSH_INTERVAL_MS, STATS_INTERVAL_MS, BTN, INPUT, __version__
-from log_buffer import LogBuffer, shutdown_log_writer
+from log_buffer import LogBuffer
 from log_view import LogView
 from process_mgr import ProcessManager
 from stats import ProcessStats, StatsMonitor
@@ -65,7 +65,7 @@ class MainWindow(QMainWindow):
         panel = QWidget(); layout = QVBoxLayout(panel); layout.setContentsMargins(0, 0, 8, 0); layout.setSpacing(8)
         
         # Bot selector
-        row = QHBoxLayout(); row.setSpacing(4)
+        row = QHBoxLayout(); row.setSpacing(4); row.addWidget(QLabel("Bot:"))
         self.bot_combo = QComboBox()
         self.bot_combo.setStyleSheet("QComboBox { padding: 4px 8px; border: 1px solid #333; border-radius: 2px; background: #1a1a1a; } QComboBox:hover { border-color: #444; } QComboBox::drop-down { border: none; width: 20px; } QComboBox QAbstractItemView { background: #1a1a1a; border: 1px solid #333; selection-background-color: #4688d8; }")
         self.bot_combo.currentTextChanged.connect(self._on_combo_changed); row.addWidget(self.bot_combo, 1)
@@ -162,10 +162,10 @@ class MainWindow(QMainWindow):
         save_config(self.bots)
 
     def _add_bot(self) -> None:
-        name, ok = QInputDialog.getText(self, "New Workspace", "Workspace name:")
+        name, ok = QInputDialog.getText(self, "New Bot", "Bot name:")
         if not ok or not name.strip(): return
         name = name.strip()
-        if name in self.bots: QMessageBox.warning(self, "Duplicate", f"Workspace '{name}' exists"); return
+        if name in self.bots: QMessageBox.warning(self, "Duplicate", f"Bot '{name}' exists"); return
         self.bots[name] = Bot(name=name); save_config(self.bots)
         self._create_views(name); self.bot_combo.setCurrentText(name); self._load_bot_ui(name); self._update_ui()
 
@@ -288,10 +288,6 @@ class MainWindow(QMainWindow):
 
     def closeEvent(self, event) -> None:
         self.proc_mgr.stop_all()
-        for e in self._editors.values():
-            e.close()
-        if self._scratch:
-            self._scratch.close()
-
-        shutdown_log_writer()  # <-- important
-        event.accept()
+        for e in self._editors.values(): e.close()
+        if self._scratch: self._scratch.close()
+        event.accept()  # atexit handles log writer cleanup

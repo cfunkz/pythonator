@@ -71,7 +71,7 @@ At its core, Pythonator is a **local Python process manager with a GUI**.
 ## Capabilities
 
 * ✅ Full ANSI color recognition (256-color, true color, bold, inverse)
-* ✅ Multi-bot process management with isolation
+* ✅ Multi-script process management with isolation
 * ✅ Separate execution paths for UI and processes (`QProcess`, `QThreadPool`)
 * ✅ Live / History / Search log modes
 * ✅ CPU and RAM usage monitoring (via `psutil`)
