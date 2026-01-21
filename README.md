@@ -1,4 +1,3 @@
-# Pythonator
 <p align="center">
   <img alt="Python" src="https://img.shields.io/badge/Python-3.13%2B-blue" />
   <img alt="PyQt6" src="https://img.shields.io/badge/UI-PyQt6-41CD52" />
@@ -13,6 +12,7 @@
     <img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support on Ko-fi" height="20">
   </a>
 </p>
+# Pythonator
 
 **Pythonator** is a desktop application for running, monitoring, and managing multiple Python scripts concurrently through a clean graphical interface.
 It is designed for developers who want predictable process control, readable logs, and simple environment management without relying on multiple terminal sessions.
